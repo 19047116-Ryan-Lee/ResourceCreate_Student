@@ -162,7 +162,7 @@ public class ResourceCentreTest {
 		assertNotNull("Test for valid chromebook",chromebookList);
 	ResourceCentre.addChromebook(chromebookList,cb1);
 	ResourceCentre.addChromebook(chromebookList, cb2);
-	String ATag = "CB003";
+	String ATag = "CB0011";
 	String due = "23/2/21";
 	boolean check = ResourceCentre.doLoanChromebook(chromebookList, ATag, due);
 	//Check if Tag CB003 was loan out
