@@ -135,9 +135,14 @@ public class ResourceCentreTest {
 
 		ResourceCentre.addCamcorder(camcorderList, cc1);
 		ResourceCentre.addCamcorder(camcorderList, cc2);
-		ResourceCentre.loanCamcorder(camcorderList);
+		String assetTag = "CC0012";
+		String due = "21/1/21";
+		boolean check = ResourceCentre.doLoanCamcorder(camcorderList, assetTag, due);
+		//Check if assetTag CC0012 was able to be loaned out
+		assertTrue(check);
+		// This is to check if the item CC0012 is not available anymore.
 		for (Camcorder item : camcorderList) {
-			if (item.getAssetTag() == "CC0012") { // This is to check if the item CC0012 is not available anymore.
+			if (item.getAssetTag() == "CC0012") { 
 				assertFalse(item.getIsAvailable());
 			}
 		}
@@ -145,7 +150,7 @@ public class ResourceCentreTest {
 		// Test that if an input has an incorrect asset tag, the system is able to
 		// detect it's false
 		String incorrectTag = "DD0012";
-		String due = "";
+		due = "";
 		assertFalse("Check if system returns false when tag is incorrect",
 				ResourceCentre.doLoanCamcorder(camcorderList, incorrectTag, due));
 
