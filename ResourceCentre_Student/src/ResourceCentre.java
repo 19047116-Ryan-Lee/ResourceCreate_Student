@@ -268,15 +268,57 @@ public class ResourceCentre {
 		}
 	}
 
-	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){
+	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){ //Shawn,
 		boolean isReturned = false;
 		// write your code here
+		
+		for(int i = 0; i < chromebookList.size(); i++)
+		{
+			if(chromebookList.get(i).getAssetTag() == tag && chromebookList.get(i).getIsAvailable() == false)
+			{
+				chromebookList.get(i).setIsAvailable(true);
+				chromebookList.get(i).setDueDate(" ");
+				isReturned = true;
+				
+				System.out.println("Chromebook Returned");
+				System.out.println(" ");
+			}
+			
+			else
+			{	System.out.println("Request Failed...");		}
+		}//End of for loop,
+		
 		return isReturned;
-	}
-	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
+		
+	}//doReturnChromebook,
+	
+	public static void returnChromebook(ArrayList<Chromebook> chromebookList) { //Shawn,
 		// write your code here
 		// write your code here
-	}
-
-
-}
+		
+		System.out.println("Returning Chromebook");
+		String x = String.format("%-10s%-25s%-10s\n", "ASSET TAG", "DESCRIPTION", "OPERATING SYSTEM");
+		
+		//Displaying loaned out chromebooks,
+		for(int i = 0; i < chromebookList.size(); i++)
+		{
+			if(chromebookList.get(i).getIsAvailable() == false)
+			{	x = String.format("%-10s%-25s%-10s\n", chromebookList.get(i).getAssetTag(), chromebookList.get(i).getDescription(), chromebookList.get(i).getOs());			}
+				
+		}
+		
+		System.out.println(x);
+		
+		//Processing,
+		String dataAT = Helper.readString("Enter Chromebook Asset Tag: ");
+		System.out.println(" ");
+		
+		System.out.println("Request Processing...");
+		doReturnChromebook(chromebookList, dataAT);
+		System.out.println(" ");
+		
+		
+		
+	}//ReturnChrombook,
+	
+}//Class,

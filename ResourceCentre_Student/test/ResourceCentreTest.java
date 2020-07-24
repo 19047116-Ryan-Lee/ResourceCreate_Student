@@ -154,7 +154,14 @@ public class ResourceCentreTest {
 	public void doReturnChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
-	}
+		
+		//Checking for null in Chromebook,
+		assertNotNull("Chromebook not null", chromebookList);
+		
+		//
+		
+		
+	}//ReturnChromebookTest,
 	
 	@After
 	public void tearDown() throws Exception {
