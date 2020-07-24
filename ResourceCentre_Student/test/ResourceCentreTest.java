@@ -181,6 +181,8 @@ public class ResourceCentreTest {
 		boolean RData5 = ResourceCentre.doReturnChromebook(chromebookList, "CB0013");
 		assertFalse("Test if Chromebook2 is loaned out", RData5);
 		
+		System.out.println(" ");
+		
 	}//ReturnChromebookTest,
 	
 	@After
