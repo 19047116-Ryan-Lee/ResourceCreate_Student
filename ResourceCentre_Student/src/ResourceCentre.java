@@ -215,14 +215,15 @@ public class ResourceCentre {
 	
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
 		// done by gordon
-		boolean isloaned = false;
+		boolean isLoaned = false;
 		for (int b = 0; b < chromebookList.size(); b++) {
 			if(tag.equalsIgnoreCase(chromebookList.get(b).getAssetTag()) && chromebookList.get(b).getIsAvailable() == true) {
 				chromebookList.get(b).setIsAvailable(false);
 				chromebookList.get(b).setDueDate(dueDate);
+				isLoaned = true;
 			}
 		}
-		return isloaned;
+		return isLoaned;
 	}
 	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
 		// done by gordon
