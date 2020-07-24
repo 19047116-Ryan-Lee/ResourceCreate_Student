@@ -317,7 +317,6 @@ public class ResourceCentre {
 		doReturnChromebook(chromebookList, dataAT);
 		System.out.println(" ");
 		
-		System.out.println(" ");
 		
 	}//ReturnChrombook,
 	
