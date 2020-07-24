@@ -91,13 +91,21 @@ public class ResourceCentreTest {
 		//Test if the item list is not null, so that items can be loaned
 		assertNotNull("Test if there is a valid Camcorder ArrayList to loan from", camcorderList);
 		
-		//Test that given an item list of 2 items, when 1 item is loaned the size of the list is 1
+		//Test that given an item list of 2 items, when 1 item(CC0012) is loaned, that item in the item list is not available.
+		
 		ResourceCentre.addCamcorder(camcorderList, cc1);
 		ResourceCentre.addCamcorder(camcorderList, cc2);
 		ResourceCentre.loanCamcorder(camcorderList);
-		assertEquals("Test if the Camcorder arraylist size is 1", 1, camcorderList.size());
+		for(Camcorder item: camcorderList) {
+			if(item.getAssetTag() == "CC0012") { //This is to check if the item CC0012 is not available anymore.
+				assertFalse(item.getIsAvailable());
+			}
+		}
 		
-		//Test that the item that was removed from the list is the item that was loaned.
+		//Test that if an input has an incorrect asset tag, the system is able to detect it's false
+		String incorrectTag = "DD0012";
+		String due = "";
+		assertFalse("Check if system returns false when tag is incorrect", ResourceCentre.doLoanCamcorder(camcorderList, incorrectTag, due));
 		
 	}
 	
