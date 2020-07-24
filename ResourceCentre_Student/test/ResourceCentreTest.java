@@ -53,13 +53,17 @@ public class ResourceCentreTest {
 		//fail("Not yet implemented");
         	// write your code here
         	//Ijas
+		//Checks if there is an available arraylist for the chromebook
         	assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
-       
+       		
+		//If the arraylist is empty, this will test if the size has increase after adding in a new element
        	 	ResourceCentre.addChromebook(chromebookList, cb1);   
         	assertEquals("Test if that Chromebook arraylist size is 1?", 1, chromebookList.size());
-       
+       		
+		//the first item of the list should be the chromebook added in the previous codes
         	assertSame("Test that the Chromebook is added same as 1st item of the list?", cb1, chromebookList.get(0));
        
+		//Adds another chormebook and test if the size has increased by 2
        		ResourceCentre.addChromebook(chromebookList, cb2);
         	assertEquals("Test Chromebook arraylist size is 2?", 2, chromebookList.size());
     	}
@@ -93,15 +97,20 @@ public class ResourceCentreTest {
 		//fail("Not yet implemented");
         	// write your code here
         	//Ijas
-        	assertNotNull("Test if there is valid Camcorder arraylist to add to", chromebookList);
+		//Test if the chromebook arraylist is available and not null
+        	assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		
+		//test if the retrieved chromebook is empty
         	String allChromebook= ResourceCentre.retrieveAllChromebook(chromebookList);
         	String testOutput = "";
         	assertEquals("Check that ViewAllChromebooklist", testOutput, allChromebook);
-       
+       		
+		//Since the list is empty, check if the arraylist has a bigger size now after adding 2 new chromebooks
         	ResourceCentre.addChromebook(chromebookList, cb1);
         	ResourceCentre.addChromebook(chromebookList, cb2);
         	assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
        
+		//test if the chromebookList retrieved matches the chromebooks added into the list previously
         	allChromebook= ResourceCentre.retrieveAllChromebook(chromebookList);
        
         	testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
