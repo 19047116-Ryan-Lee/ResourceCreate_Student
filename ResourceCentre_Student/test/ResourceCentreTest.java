@@ -158,7 +158,24 @@ public class ResourceCentreTest {
 	@Test
 	public void doLoanChromebookTest() {
 		// fail("Not yet implemented");
-		// write your code here
+		// Gordon
+		assertNotNull("Test for valid chromebook",chromebookList);
+	ResourceCentre.addChromebook(chromebookList,cb1);
+	ResourceCentre.addChromebook(chromebookList, cb2);
+	String ATag = "CB003";
+	String due = "23/2/21";
+	boolean check = ResourceCentre.doLoanChromebook(chromebookList, ATag, due);
+	//Check if Tag CB003 was loan out
+	assertTrue(check);
+	//Check if item is not available anymore
+	for(Chromebook item : chromebookList) {
+		if(item.getAssetTag() == "CB003") {
+			assertFalse(item.getIsAvailable());
+		}
+		String wrongTag = "CE004";
+		due = "";
+		assertFalse("Test if system returns false when tag is incorrect",ResourceCentre.doLoanChromebook(chromebookList, wrongTag, due));
+	}
 	}
 
 	@Test
