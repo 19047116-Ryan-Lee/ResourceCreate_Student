@@ -159,6 +159,7 @@ public class ResourceCentreTest {
 	public void doLoanChromebookTest() {
 		// fail("Not yet implemented");
 		// Gordon
+		
 		assertNotNull("Test for valid chromebook",chromebookList);
 	ResourceCentre.addChromebook(chromebookList,cb1);
 	ResourceCentre.addChromebook(chromebookList, cb2);
