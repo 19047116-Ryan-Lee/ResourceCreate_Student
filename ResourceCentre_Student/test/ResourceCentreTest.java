@@ -88,7 +88,6 @@ public class ResourceCentreTest {
 		// test if the expected output string same as the list of camcorders retrieved
 		// from the SourceCentre
 		allCamcorder = ResourceCentre.retrieveAllCamcorder(camcorderList);
-
 		testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0011", "Nikon HDSLR", "Yes", "", 40);
 		testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n", "CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
 
@@ -102,7 +101,6 @@ public class ResourceCentreTest {
 		// Ijas
 		// Test if the chromebook arraylist is available and not null
 		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
-
 		// test if the retrieved chromebook is empty
 		String allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
 		String testOutput = "";
@@ -113,16 +111,16 @@ public class ResourceCentreTest {
 		ResourceCentre.addChromebook(chromebookList, cb1);
 		ResourceCentre.addChromebook(chromebookList, cb2);
 		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
-
+		
 		// test if the chromebookList retrieved matches the chromebooks added into the
 		// list previously
 		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+		testOutput = "";
 		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0011", "My Google Chromebook 1st", "Yes", "",
-				"Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "",
-				"Win 10");
-		System.out.println(allChromebook);
-		assertEquals("Check that ViewAllChromebooklist", testOutput, allChromebook);
+                "Mac OS");
+        testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "",
+                "Win 10");
+        assertEquals("Check that both strings are equal", testOutput, allChromebook);
 	}
 
 	@Test
