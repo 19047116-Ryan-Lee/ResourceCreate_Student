@@ -212,12 +212,26 @@ public class ResourceCentre {
 	
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
 		// write your code here
-		return true;
+		boolean isloaned = false;
+		for (int b = 0; b < chromebookList.size(); b++) {
+			if(tag.equalsIgnoreCase(chromebookList.get(b).getAssetTag()) && chromebookList.get(b).getIsAvailable() == true) {
+				chromebookList.get(b).setIsAvailable(false);
+				chromebookList.get(b).setDueDate(dueDate);
+			}
+		}
+		return isloaned;
 	}
 	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
 		// write your code here
-		
-		
+		ResourceCentre.viewAllChromebook(chromebookList);
+		String chromtag = Helper.readString("Enter asset tag > ");
+		String due = Helper.readString("Enter due date > ");
+		Boolean isLoaned =doLoanChromebook(chromebookList,chromtag,due);
+		if(isLoaned == false){
+			System.out.println("Invalid asset tag");
+		}else {
+			System.out.println("Chrome book " + chromtag + "has been loaned out");
+		}
 	}
 	
 	//================================= Option 4 Return =================================
