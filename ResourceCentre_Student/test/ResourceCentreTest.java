@@ -169,7 +169,7 @@ public class ResourceCentreTest {
 	assertTrue(check);
 	//Check if item is not available anymore
 	for(Chromebook item : chromebookList) {
-		if(item.getAssetTag() == "CB003") {
+		if(item.getAssetTag() == "CB0011") {
 			assertFalse(item.getIsAvailable());
 		}
 		String wrongTag = "CE004";
