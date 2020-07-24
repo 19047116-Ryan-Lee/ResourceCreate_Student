@@ -210,24 +210,31 @@ public class ResourceCentreTest {
     	String ArrayListx= ResourceCentre.retrieveAllChromebook(chromebookList);
     	String testOutput = "";
     	assertEquals("Check that ViewAllChromebooklist", testOutput, ArrayListx);
+    	
+    	ResourceCentre.addChromebook(chromebookList,cb1);
+    	ResourceCentre.addChromebook(chromebookList, cb2);
 		
 		//Checking for normal return,
+    	chromebookList.get(0).setIsAvailable(false); //has been loaned
     	boolean RData1 = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
 		assertTrue("Test if Chromebook1 is loaned out", RData1);
 		
+		chromebookList.get(1).setIsAvailable(false); //has been loaned
 		boolean RData2 = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
 		assertTrue("Test if Chromebook2 is loaned out", RData2);
     	
 		//If Chromebook is not loaned out,
+		chromebookList.get(0).setIsAvailable(true);
 		boolean RData3 = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
 		assertFalse("Test if Chromebook1 is loaned out", RData3);
 		
+		chromebookList.get(1).setIsAvailable(true);
 		boolean RData4 = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
 		assertFalse("Test if Chromebook2 is loaned out", RData4);
 		
 		//If Chromebook exceed the range,
 		boolean RData5 = ResourceCentre.doReturnChromebook(chromebookList, "CB0013");
-		assertFalse("Test if Chromebook2 is loaned out", RData5);
+		assertFalse("Test if Chromebook is loaned out", RData5);
 		
 		System.out.println("");
 	}//ReturnChromebookTest,
