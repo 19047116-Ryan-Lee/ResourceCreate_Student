@@ -85,9 +85,19 @@ public class ResourceCentreTest {
 	}
 
 	@Test
-	public void doLoanCamcorderTest() {
+	public void doLoanCamcorderTest() { //Ryan Lee
 		//fail("Not yet implemented");
 		// write your code here
+		//Test if the item list is not null, so that items can be loaned
+		assertNotNull("Test if there is a valid Camcorder ArrayList to loan from", camcorderList);
+		
+		//Test that given an item list of 2 items, when 1 item is loaned the size of the list is 1
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		ResourceCentre.loanCamcorder(camcorderList);
+		assertEquals("Test if the Camcorder arraylist size is 1", 1, camcorderList.size());
+		
+		//Test that the item that was removed from the list is the item that was loaned.
 		
 	}
 	
