@@ -151,15 +151,35 @@ public class ResourceCentreTest {
 		assertFalse("Test if non-existing camcorder CC0013 returns false" , isReturned);
 	}
 	@Test
-	public void doReturnChromebookTest() {
+	public void doReturnChromebookTest() { //Shawn,
 		//fail("Not yet implemented");
 		// write your code here
 		
 		//Checking for null in Chromebook,
 		assertNotNull("Chromebook not null", chromebookList);
 		
-		//
+		//Checking for empty ChromebookList,
+    	String ArrayListx= ResourceCentre.retrieveAllChromebook(chromebookList);
+    	String testOutput = "";
+    	assertEquals("Check that ViewAllChromebooklist", testOutput, ArrayListx);
 		
+		//Checking for normal return,
+    	boolean RData1 = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
+		assertTrue("Test if Chromebook1 is loaned out", RData1);
+		
+		boolean RData2 = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
+		assertTrue("Test if Chromebook2 is loaned out", RData2);
+    	
+		//If Chromebook is not loaned out,
+		boolean RData3 = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
+		assertFalse("Test if Chromebook1 is loaned out", RData3);
+		
+		boolean RData4 = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
+		assertFalse("Test if Chromebook2 is loaned out", RData4);
+		
+		//If Chromebook exceed the range,
+		boolean RData5 = ResourceCentre.doReturnChromebook(chromebookList, "CB0013");
+		assertFalse("Test if Chromebook2 is loaned out", RData5);
 		
 	}//ReturnChromebookTest,
 	
