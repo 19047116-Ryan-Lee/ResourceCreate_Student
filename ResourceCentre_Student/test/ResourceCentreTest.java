@@ -146,7 +146,6 @@ public class ResourceCentreTest {
 				assertFalse(item.getIsAvailable());
 			}
 		}
-		// test
 		// Test that if an input has an incorrect asset tag, the system is able to
 		// detect it's false
 		String incorrectTag = "DD0012";
