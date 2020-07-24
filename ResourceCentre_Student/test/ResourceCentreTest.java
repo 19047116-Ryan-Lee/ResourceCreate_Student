@@ -100,8 +100,20 @@ public class ResourceCentreTest {
 	@Test
 	public void doReturnCamcorderTest() {
 		//fail("Not yet implemented");
-		// write your code here
-		
+		// write your code here Sebastian
+		assertNotNull("Test for valid camcorder list", camcorderList);
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		//error because the camcorder was not loaned out
+		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
+		assertFalse("Test if available camcorder CC011 returns false", isReturned);
+		//normal test condition becausse the camcorder was loaned out and returned
+		ResourceCentre.addCamcorder(camcorderList,cc2);
+		cc2.setIsAvailable(false);
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
+		assertTrue("Test if loaned out camcorder CC0012 returns true", isReturned);
+		//this is an error condition for a non existing camcorder
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
+		assertFalse("Test if non-existing camcorder CC0013 returns false" , isReturned);
 	}
 	@Test
 	public void doReturnChromebookTest() {
